@@ -1,0 +1,11 @@
+diff --git a/main.lua b/main.lua
+index 9a4e005..14d3ffb 100644
+--- a/main.lua
++++ b/main.lua
+@@ -1,6 +1,3 @@
+-Steam = require 'libraries/steamworks'
+-if type(Steam) == 'boolean' then Steam = nil end
+-
+ Object = require 'libraries/classic/classic'
+ Timer = require 'libraries/enhanced_timer/EnhancedTimer'
+ Input = require 'libraries/boipushy/Input'

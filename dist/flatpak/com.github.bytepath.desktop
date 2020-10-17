@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BYTEPATH
+Exec=bytepath
+Terminal=false
+Type=Application
+Icon=com.github.bytepath
+StartupWMClass=bytepath
+Comment=BYTEPATH
+Categories=Game;

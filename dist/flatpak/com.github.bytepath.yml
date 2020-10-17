@@ -1,0 +1,40 @@
+app-id: com.github.bytepath
+default-branch: stable
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+command: bytepath
+finish-args:
+  - --socket=x11
+  - --socket=pulseaudio
+  - --device=dri
+modules:
+  - love2d-0.10.2.json
+  - name: bytepath
+    buildsystem: simple
+    build-commands:
+      - rm -rf love
+      - mv bytepath ${FLATPAK_DEST}/bin/bytepath
+      - mkdir -p ${FLATPAK_DEST}/share/{appdata,applications,icons/hicolor/512x512/apps}
+      - mv com.github.bytepath.jpg         ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/com.github.bytepath.png
+      - mv com.github.bytepath.desktop     ${FLATPAK_DEST}/share/applications
+      - mv com.github.bytepath.appdata.xml ${FLATPAK_DEST}/share/appdata/com.github.appdata.xml
+      - zip -r ${FLATPAK_DEST}/bin/BYTEPATH.love *
+    sources:
+      - type: git
+        url: https://github.com/a327ex/BYTEPATH
+        commit: 51ee3086ae3369a2c80e4e47d4b62d480af4fe89
+      - type: file
+        path: com.github.bytepath.desktop
+      - type: file
+        path: com.github.bytepath.appdata.xml
+      - type: patch
+        path: steam-framework-removal.patch
+      - type: file
+        url: https://cdn.cloudflare.steamstatic.com/steam/apps/760330/header.jpg
+        sha256: 9415e13d92709e4178a577db4b0d0e903093567d235c19e67c29fe978486624d
+        dest-filename: com.github.bytepath.jpg
+      - type: script
+        dest-filename: bytepath
+        commands:
+          - exec /app/bin/love /app/bin/BYTEPATH.love
