@@ -18,7 +18,7 @@ modules:
       - install -Dm644 com.github.bytepath.desktop     ${FLATPAK_DEST}/share/applications/com.github.bytepath.desktop
       - install -Dm644 com.github.bytepath.appdata.xml ${FLATPAK_DEST}/share/appdata/com.github.appdata.xml
       - rm -rf love
-      - zip -r ${FLATPAK_DEST}/bin/BYTEPATH.love *
+      - zip -x 'com.github.bytepath.*' -x bytepath -x dist -r ${FLATPAK_DEST}/bin/BYTEPATH.love *
     sources:
       - type: git
         url: https://github.com/a327ex/BYTEPATH
