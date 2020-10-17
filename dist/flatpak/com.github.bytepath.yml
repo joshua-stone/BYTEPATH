@@ -13,12 +13,11 @@ modules:
   - name: bytepath
     buildsystem: simple
     build-commands:
+      - install -Dm755 bytepath ${FLATPAK_DEST}/bin/bytepath
+      - install -Dm644 com.github.bytepath.jpg         ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/com.github.bytepath.png
+      - install -Dm644 com.github.bytepath.desktop     ${FLATPAK_DEST}/share/applications/com.github.bytepath.desktop
+      - install -Dm644 com.github.bytepath.appdata.xml ${FLATPAK_DEST}/share/appdata/com.github.appdata.xml
       - rm -rf love
-      - mv bytepath ${FLATPAK_DEST}/bin/bytepath
-      - mkdir -p ${FLATPAK_DEST}/share/{appdata,applications,icons/hicolor/512x512/apps}
-      - mv com.github.bytepath.jpg         ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/com.github.bytepath.png
-      - mv com.github.bytepath.desktop     ${FLATPAK_DEST}/share/applications
-      - mv com.github.bytepath.appdata.xml ${FLATPAK_DEST}/share/appdata/com.github.appdata.xml
       - zip -r ${FLATPAK_DEST}/bin/BYTEPATH.love *
     sources:
       - type: git
